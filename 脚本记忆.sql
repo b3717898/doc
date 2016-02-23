@@ -101,6 +101,8 @@ git pull
 
 git remote -v
 
+git config --global user.name "Chris' Desktop"
+git config --global user.email "tao_jie@hoperun.com"
 
 
 
