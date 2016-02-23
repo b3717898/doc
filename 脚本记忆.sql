@@ -99,6 +99,8 @@ git status
 git clone https://github.com/b3717898/doc.git
 git pull
 
+git remote -v
+
 
 
 
