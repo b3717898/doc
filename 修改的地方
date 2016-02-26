@@ -1,4 +1,3 @@
-guest-0594692/tqbo0788
 
 Message :	代码：getDefaultQMSubCount,对象：hostname:mq.boh.hwwt2.comqueueManagerName:QM_RSC1port:3301channel:SERVERCHANNELCCSID:1208，错误描述：MQJE001: 完成代码为“2”，原因为“2033”。
 --------------------------------------------------------------------------------
@@ -6,6 +5,7 @@ com.ibm.mq.MQException: MQJE001: 完成代码为“2”，原因为“2033”。
 	at com.ibm.mq.MQDestination.getInt(MQDestination.java:666)
 	at com.ibm.mq.MQDestination.get(MQDestination.java:465)
 	at com.ibm.mq.pcf.PCFMessageAgent.send(PCFMessageAgent.java:197)
+guest-0594692/tqbo0788
 	at com.yum.boh.fund.api.ds.mq.MQTransInterface.getDefaultQMSubCount(MQTransInterface.java:92)
 	at com.yum.boh.fund.api.ds.DataServiceApi.sendFileToStores4Large(DataServiceApi.java:915)
 	at com.yum.boh.fund.api.ds.DataServiceApi.sendFileToStores4Large(DataServiceApi.java:832)
@@ -567,3 +567,4 @@ pwd:nchb3156
 	c 对于一些餐厅cpu高和慢的跟踪和处理
 	d 餐厅端性能问题的跟踪（周末找个时间跟踪一下）
 
+26、和邓宇沟通一下关于跳转页面不使用图片的问题。
