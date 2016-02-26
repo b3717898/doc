@@ -558,5 +558,12 @@ str = securityService.loginBySso(ssoInfo);
 23、下周晨会的时候宣布认同鼓励
 24、为了github工具的修改
 
+id:guest-9243373
+pwd:nchb3156
 
+25、PMO会议结论：
+	a StorePortal的框架和登录部分算作StorePortal的工作量，而衍生出来的其他部分算作各个模块的工作量，可以通过需求变更的方式来获取资源。
+	b 我们回去核对非框架的工作量。
+	c 对于一些餐厅cpu高和慢的跟踪和处理
+	d 餐厅端性能问题的跟踪（周末找个时间跟踪一下）
 
