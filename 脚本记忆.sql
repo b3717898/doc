@@ -106,3 +106,4 @@ git config --global user.email "tao_jie@hoperun.com"
 
  time dd if=/dev/zero of=/test.dbf bs=8k count=300000   --计算io的平均值的命令
 
+modify 来自 thinkpad
