@@ -580,10 +580,11 @@ pwd:nchb3156
 *36、按照餐厅的单位发出卡顿情况的处理状态(国王)
 *37、发邮件给郁东风
 38、Yoland的StorePortal的工作量和计划预估。
-39、MobileDuty：PhaseI（Dashboard KPI Checklist，RVR记录 值班记录）；PhaseII（除了PhaseI以外的功能）
+*39、MobileDuty：PhaseI（Dashboard KPI Checklist，RVR记录 值班记录）；PhaseII（除了PhaseI以外的功能）
 *40、补充陈栩的邮件
 41、Duty的Dashboard在SP上的展现，如何排入计划
 42、李园周一要看一下StorePortal网络不通的时候的场景是否符合测试结果，Yum开了一个bug过来，发现网络不通的时候没有调回Duty首页，而是依然跳转到StorePortal了
+43、和文宏确认一下StorePortal的资源，以及DutyMobile的后续事宜。
 
 
 性能问题跟踪：
