@@ -585,6 +585,11 @@ pwd:nchb3156
 41、Duty的Dashboard在SP上的展现，如何排入计划
 42、李园周一要看一下StorePortal网络不通的时候的场景是否符合测试结果，Yum开了一个bug过来，发现网络不通的时候没有调回Duty首页，而是依然跳转到StorePortal了
 43、和文宏确认一下StorePortal的资源，以及DutyMobile的后续事宜。
+44、Duty Mobile的设备的机会！
+45、和应长荣对视图的分析
+46、许健的工作交接
+47、性能测试相关
+48、3/7晚上停止NJG102和QG1022的数据上传计划任务。
 
 
 性能问题跟踪：
