@@ -1,0 +1,143 @@
+PIM修数据步骤：
+1、SELECT * FROM V_PUBLISH_ITEM_RELATION WHERE SELL_CODE = 'J8H240'; --先在这个视图里面找到sixbititemcode
+2、看看查出来的Item_Code是不是Excel文档里面的Item_Code那一列。
+3、如果发现不是（当然不是啦，否则就不用修了），就执行如下步骤。
+4、select * from ACP_T_KEY_ITEM_CODE_INFO where SIX_BIT_ITEM_CODE = '43H287'; --找到Excel里面正确的ItemCode，看看能查出什么?
+5、select * from ACP_T_KEY_INFO where guid = '3672a140-519a-4e1d-9d5a-a46d82e8c1db';--根据底4条里面的key_id
+6、根据第4条查询出来的Product_id来执行如下sql：select * from ACP_T_PRODUCT_KEY_ITEM_CODE_INFO where product_id = '573bf4db-6a9d-4583-97b1-e850a23914b5';
+6、看看查询出结果里面的six_bit_item_code是多少，如果是43H286的话
+7、再执行如下语句：select * from acp_t_key_item_code_info where six_bit_item_code = 'J8H240';--看看其Product_Code所对应的后缀是多少，这里是COM。此时记录：43H286--> BOH；43H287--> COM
+8、那么再回到第6条，将该语句查询出来的结果增加前缀为BOH：
+    --1 更新前缀(43H286的前缀)
+    update ACP_T_PRODUCT_KEY_ITEM_CODE_INFO set key_postfix = 'BOH',
+    UPDATE_ID = 'tao_jie',
+    UPDATE_TIME = GETDATE()
+    where guid = '34AFA659-6898-4981-9743-D038FF74308A';
+9、然后插入同样的一条记录，只是前缀变为COM，同时six_bit_item_code 为'43H287'
+    --2 插入少的数据（Product）
+    INSERT INTO [BOH2G_RSC_WORK_BOH_0310].[dbo].[ACP_T_PRODUCT_KEY_ITEM_CODE_INFO] (
+        [GUID],
+        [BRAND_CODE],
+        [PRODUCT_ID],
+        [PRODUCT_TYPE_ID],
+        [KEY_POSTFIX],
+        [ITEM_ID],
+        [SIX_BIT_ITEM_CODE],
+        [NINE_BIT_ITEM_CODE],
+        [KEY_CODE],
+        [PRODUCT_NAME],
+        [NONFOOD_FLAG],
+        [CREATE_ID],
+        [CREATE_TIME],
+        [UPDATE_ID],
+        [UPDATE_TIME],
+        [DEL_FLAG]
+    )
+    VALUES
+        (
+            'taojie_p-6a9d-4583-97b1-e850a23914b5',
+            '6',
+            '573bf4db-6a9d-4583-97b1-e850a23914b5',
+            'd60fbbbf-9144-4c3c-83d9-8b593b3f0031',
+            'COM',
+            '12892',
+            '43H287',
+            NULL,
+            'PSAS7',
+            '普装摩洛哥烤鸡',
+            'N',
+            'tao_jie',
+            GETDATE(),
+            'tao_jie',
+            GETDATE(),
+            'N'
+        );
+
+10、插入少的数据（key_item）：
+    INSERT INTO [BOH2G_RSC_WORK_BOH_0310].[dbo].[ACP_T_KEY_ITEM_CODE_INFO] (
+        [GUID],
+        [BRAND_CODE],
+        [SIX_BIT_ITEM_CODE],
+        [NINE_BIT_ITEM_CODE],
+        [KEY_CODE],
+        [ITEM_NAME],
+        [ITEM_ID],
+        [PRODUCT_CODE],
+        [PRODUCT_NAME],
+        [SELL_TYPE_ID],
+        [COMBO_TYPE_ID],
+        [COMBO_CODE],
+        [COMBO_NAME],
+        [PROMO_WINDOW],
+        [COUPON_TYPE],
+        [DISCOUNT_TYPE],
+        [QUANTITY],
+        [UNIQUE_CODE],
+        [DISCOUNT_FLAG],
+        [COMBO_GROUP],
+        [PRODUCT_ID],
+        [PRODUCT_TYPE_ID],
+        [KEY_POSTFIX],
+        [KEY_ID],
+        [COMBO_GUID],
+        [COMBO_CONTENT_GUID],
+        [COUPON_TYPE_ID],
+        [INIT_NUMBER],
+        [PREFIX_CODE],
+        [CREATE_ID],
+        [CREATE_TIME],
+        [UPDATE_ID],
+        [UPDATE_TIME],
+        [DEL_FLAG],
+        [IS_WITH_T],
+        [IS_PRODUCT],
+        [AMOUNT]
+    )
+    VALUES
+        (
+        'taojie_i-6a9d-4583-97b1-e850a23914b5',
+        '6',
+        '43H286',
+        NULL,
+        'PSAS7',
+        '普装摩洛哥烤鸡BOH(43H286)',
+        '12892',
+        '43H286',
+        '普装摩洛哥烤鸡',
+        '02edf64d-2252-4687-b9fa-430906a2d878',
+        'D0F7CA95-BA73-4F9D-A46A-A5B2D55D0792',
+        'Non-Combo',
+        'Non-Combo',
+        'NULL',
+        'NULL',
+        'NULL',
+        '1.00',
+        '43H287',
+        '0',
+        'NULL',
+        '573bf4db-6a9d-4583-97b1-e850a23914b5',
+        'd60fbbbf-9144-4c3c-83d9-8b593b3f0031',
+        'BOH',
+        '3672a140-519a-4e1d-9d5a-a46d82e8c1db',
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        'tao_jie',
+        GETDATE(),
+        'tao_jie',
+        GETDATE(),
+        'N',
+        'N',
+        'Y',
+        '1'
+    );
+
+11、最后再检查一下是否符合excel里面的内容
+
+
+        'tao_jie',
+        GETDATE(),
+        'tao_jie',
+        GETDATE(),
